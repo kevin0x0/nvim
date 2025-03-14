@@ -1,8 +1,9 @@
--- lua.lua
-
 return {
-  server = 'lua_ls',
-  opts = {
+  clangd = {},
+  hls = {},
+  html = {},
+  jdtls = {},
+  lua_ls = {
     settings = {
       Lua = {
         runtime = {
@@ -24,5 +25,7 @@ return {
         },
       },
     }
-  }
+  },
+  pyright = {},
+  verible = {},
 }
