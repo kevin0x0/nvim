@@ -43,7 +43,13 @@ local diagnostics_icons = {
   error = "",
 }
 
-vim.fn.sign_define("DiagnosticSignError", { text = diagnostics_icons.error, texthl = "DiagnosticSignError", icon = nil })
-vim.fn.sign_define("DiagnosticSignWarn", { text = diagnostics_icons.warn, texthl = "DiagnosticSignWarn", icon = nil })
-vim.fn.sign_define("DiagnosticSignInfo", { text =diagnostics_icons.info, texthl = "DiagnosticSignInfo", icon = nil })
-vim.fn.sign_define("DiagnosticSignHint", { text =diagnostics_icons.hint, texthl = "DiagnosticSignHint", icon = nil })
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = diagnostics_icons.error,
+      [vim.diagnostic.severity.WARN] = diagnostics_icons.warn,
+      [vim.diagnostic.severity.INFO] = diagnostics_icons.info,
+      [vim.diagnostic.severity.HINT] = diagnostics_icons.hint,
+    }
+  }
+}
