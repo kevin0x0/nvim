@@ -5,15 +5,16 @@ local language = {
   "markdown",
   "markdown_inline",
   "make",
-  "c_sharp",
   "python",
   "verilog",
-  "cuda",
   "haskell",
   "java",
   "javascript",
   "css",
   "html",
+  "rust",
+  "go",
+  "bash",
 }
 
 return {
