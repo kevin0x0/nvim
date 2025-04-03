@@ -47,7 +47,7 @@ vim.diagnostic.config {
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = diagnostics_icons.error,
-      [vim.diagnostic.severity.WARN] = diagnostics_icons.warn,
+      [vim.diagnostic.severity.WARN] = diagnostics_icons.warning,
       [vim.diagnostic.severity.INFO] = diagnostics_icons.info,
       [vim.diagnostic.severity.HINT] = diagnostics_icons.hint,
     }
