@@ -6,17 +6,17 @@ local config = function(_, _)
   local cmp = require 'cmp'
   cmp.setup {
     -- snippet engine
-    -- snippet = {
-    --   expand = function(args)
-    --     -- for `vsnip` users.
-    --     vim.fn["vsnip#anonymous"](args.body)
-    --   end,
-    -- },
+    snippet = {
+      expand = function(args)
+        -- for `vsnip` users.
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
     -- sources
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'buffer' },
-      -- { name = 'vsnip' },
+      { name = 'vsnip' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'omni' },
       { name = 'path' },
@@ -31,18 +31,18 @@ local config = function(_, _)
       ['<Tab>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 'c' }), -- accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ['<a-j>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
       ['<a-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
-      -- ['<a-l>'] = cmp.mapping(function(_)
-      --   if vim.fn["vsnip#available"](1) == 1 then
-      --     feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      --     -- else
-      --     --   fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-      --   end
-      -- end, { 'i', 's' }),
-      -- ['<a-h>'] = cmp.mapping(function()
-      --   if vim.fn["vsnip#jumpable"](-1) == 1 then
-      --     feedkey("<Plug>(vsnip-jump-prev)", "")
-      --   end
-      -- end, { 'i', 's' }),
+      ['<a-l>'] = cmp.mapping(function(_)
+        if vim.fn["vsnip#available"](1) == 1 then
+          feedkey("<Plug>(vsnip-expand-or-jump)", "")
+          -- else
+          --   fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        end
+      end, { 'i', 's' }),
+      ['<a-h>'] = cmp.mapping(function()
+        if vim.fn["vsnip#jumpable"](-1) == 1 then
+          feedkey("<Plug>(vsnip-jump-prev)", "")
+        end
+      end, { 'i', 's' }),
     },
     -- format with lspkind
     formatting = {
@@ -79,7 +79,8 @@ return {
   "hrsh7th/cmp-buffer",                  -- { name = 'buffer' },
   "hrsh7th/cmp-path",                    -- { name = 'path' }
   "hrsh7th/cmp-cmdline",                 -- { name = 'cmdline' }
-  -- "hrsh7th/cmp-vsnip",                   -- { name = 'vsnip' }
+  "hrsh7th/cmp-vsnip",                   -- { name = 'vsnip' }
+  "hrsh7th/vim-vsnip",
   "hrsh7th/cmp-nvim-lsp-signature-help", -- { name = 'nvim_lsp_signature_help' }
 
   {
