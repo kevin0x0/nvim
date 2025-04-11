@@ -1,11 +1,11 @@
 local opt = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>fb', function()
+vim.keymap.set('n', '<Leader>fb', function()
   require "telescope.builtin".current_buffer_fuzzy_find()
 end, opt)
-vim.keymap.set('n', '<space>ff', function()
+vim.keymap.set('n', '<Leader>ff', function()
   require "telescope.builtin".find_files()
 end, opt)
-vim.keymap.set('n', '<space>fg', function()
+vim.keymap.set('n', '<Leader>fg', function()
   require "telescope.builtin".live_grep()
 end, opt)
 

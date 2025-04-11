@@ -3,6 +3,8 @@
 local opt = { noremap = true, silent = true }
 local noremap_opt = { noremap = true }
 
+vim.g.mapleader = ' '
+
 -- begin global key map
 
 vim.keymap.set('i', 'jk', '<Esc>', noremap_opt)
