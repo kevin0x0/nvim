@@ -15,21 +15,15 @@ local function on_attach(_, bufnr)
   vim.keymap.set('n', 'grr', function() require "telescope.builtin".lsp_references() end, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
+  vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<Leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
 
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, bufopts)
-  vim.keymap.set('n', '[d', function()
-    vim.diagnostic.jump { count = 1, float = true }
-  end, bufopts)
-  vim.keymap.set('n', '[d', function()
-    vim.diagnostic.jump { count = -1, float = true }
-  end, bufopts)
-  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
+  vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, bufopts)
+  vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, bufopts)
 end
 
 local lspconfig = require("lspconfig")
