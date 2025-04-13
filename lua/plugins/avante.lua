@@ -13,6 +13,13 @@ return {
         model = "deepseek-coder",
       },
     },
+    hints = {
+      enabled = false,
+    },
+    file_selector = {
+      provider = "telescope",
+      provider_opts = {}
+    },
     mappings = {
        --- @class AvanteConflictMappings
        diff = {
