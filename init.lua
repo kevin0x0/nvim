@@ -7,6 +7,6 @@ require "common.visual"
 require "common.lazy"
 
 -- lsp
-require "lsp"
+require "common.lsp"
 
 vim.cmd.colorscheme 'tokyonight'

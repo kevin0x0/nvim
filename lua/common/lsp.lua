@@ -1,9 +1,3 @@
--- setup.lua
-
-local caps = require 'cmp_nvim_lsp'.default_capabilities()
-local lsp_default = require 'lspconfig'.util.default_config
-lsp_default.capabilities = vim.tbl_deep_extend('force', lsp_default.capabilities, caps)
--- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
 
 local function on_attach(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -26,9 +20,19 @@ local function on_attach(_, bufnr)
   vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, bufopts)
 end
 
-local lspconfig = require("lspconfig")
-local specs = require("lsp.specs")
-for server, opts in pairs(specs) do
-  opts.on_attach = opts.on_attach or on_attach
-  lspconfig[server].setup(opts)
-end
+---@type vim.lsp.Config
+local global_config = {
+  on_attach = on_attach,
+  capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+}
+vim.lsp.config('*', global_config)
+
+vim.lsp.enable({
+  'lua_ls',
+  'clangd',
+  'hls',
+  'html',
+  'jdtls',
+  'pyright',
+  'verible',
+})
