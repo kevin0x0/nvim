@@ -23,7 +23,7 @@ end
 ---@type vim.lsp.Config
 local global_config = {
   on_attach = on_attach,
-  capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+  capabilities = require 'cmp_nvim_lsp'.default_capabilities(),
 }
 vim.lsp.config('*', global_config)
 

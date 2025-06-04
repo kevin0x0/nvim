@@ -4,6 +4,7 @@ require "common.options"
 require "common.keymaps"
 require "common.commands"
 require "common.visual"
+require "common.diagnostic"
 require "common.lazy"
 
 -- lsp
