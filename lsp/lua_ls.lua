@@ -16,11 +16,13 @@ return {
     Lua = {}
   },
   on_init = function(client)
-    if client.workspace_folders then
-      local path = client.workspace_folders[1].name
-      if path ~= vim.fn.stdpath('config') then
-        return
-      end
+    if client.workspace_folders == nil or #client.workspace_folders == 0 then
+      return
+    end
+    local path = client.workspace_folders[1].name
+    if not path:match(vim.fn.stdpath('config') .. ".*") and
+      not path:match(vim.fn.stdpath('data') .. ".*") then
+      return
     end
 
     ---@diagnostic disable-next-line
