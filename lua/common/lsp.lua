@@ -1,5 +1,5 @@
 
-local function on_attach(_, bufnr)
+local function on_attach(bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
   -- Mappings.
@@ -18,11 +18,18 @@ local function on_attach(_, bufnr)
 
   vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, bufopts)
   vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, bufopts)
+  vim.notify("hello", vim.log.levels.DEBUG)
 end
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  pattern = '*',
+  callback = function(arg)
+    on_attach(arg.buf)
+  end
+})
 
 ---@type vim.lsp.Config
 local global_config = {
-  on_attach = on_attach,
   capabilities = require 'cmp_nvim_lsp'.default_capabilities(),
 }
 vim.lsp.config('*', global_config)
