@@ -18,7 +18,6 @@ local function on_attach(bufnr)
 
   vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, bufopts)
   vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, bufopts)
-  vim.notify("hello", vim.log.levels.DEBUG)
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
