@@ -20,7 +20,8 @@ return {
       return
     end
     local path = client.workspace_folders[1].name
-    if not path:match(vim.fn.stdpath('config') .. ".*") and
+    if not os.getenv 'LUA_LS_FOR_NVIM_PLUGIN' and
+      not path:match(vim.fn.stdpath('config') .. ".*") and
       not path:match(vim.fn.stdpath('data') .. ".*") then
       return
     end
