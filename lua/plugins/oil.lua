@@ -1,5 +1,16 @@
 -- oil.lua
 
+local opt = { noremap = true, silent = true }
+
+vim.keymap.set('n', '<a-e>', function()
+  require('oil.actions').parent.callback()
+end, opt);
+
+vim.keymap.set('n', '<a-f>', function()
+  require('oil.actions').open_cwd.callback()
+end, opt);
+
+
 return {
   "stevearc/oil.nvim",
   --- @module 'oil'

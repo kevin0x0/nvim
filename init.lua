@@ -10,4 +10,5 @@ require "common.lazy"
 -- lsp
 require "common.lsp"
 
-vim.cmd.colorscheme 'tokyonight'
+local colorscheme = os.getenv('TERM') ~= 'linux' and 'tokyonight' or 'evening'
+vim.cmd.colorscheme(colorscheme)

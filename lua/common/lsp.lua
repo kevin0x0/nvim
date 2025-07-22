@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
----@type vim.lsp.Config
+--- @type vim.lsp.Config
 local global_config = {
   capabilities = require 'cmp_nvim_lsp'.default_capabilities(),
 }

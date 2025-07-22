@@ -1,7 +1,9 @@
 -- global visual configuration
 
 local highlight = vim.cmd.highlight
--- make sure no trailing '~'.
+
+
+-- make EndOfBuffer invisible
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function(_)
@@ -16,6 +18,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
     -- fix hover markdown highlight
     highlight { 'link', 'NormalFloat', 'Pmenu', bang = true }
+
+    -- make cursorline visible in linux terminal
+    highlight { 'CursorLine',  "ctermbg=146" }
   end
 })
 
