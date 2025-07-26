@@ -1,4 +1,12 @@
 ---@type vim.lsp.Config
+
+---@diagnostic disable-next-line
+local is_windows = vim.uv.os_uname().sysname == 'Windows_NT'
+
+local function normalize_path(path)
+  return is_windows and path:gsub('\\', '/') or path
+end
+
 return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
@@ -19,10 +27,10 @@ return {
     if client.workspace_folders == nil or #client.workspace_folders == 0 then
       return
     end
-    local path = client.workspace_folders[1].name
+    local path = normalize_path(client.workspace_folders[1].name)
     if not os.getenv 'LUA_LS_FOR_NVIM_PLUGIN' and
-      not path:match(vim.fn.stdpath('config') .. ".*") and
-      not path:match(vim.fn.stdpath('data') .. ".*") then
+      not path:match(normalize_path(vim.fn.stdpath('config')) .. ".*") and
+      not path:match(normalize_path(vim.fn.stdpath('data')) .. ".*") then
       return
     end
 
