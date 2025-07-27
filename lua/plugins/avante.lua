@@ -108,7 +108,7 @@ return {
       opts = {
         file_types = { "markdown", "Avante" },
         code = {
-          conceal_delimiters = false,
+          border = 'thick'
         }
       },
       ft = { "markdown", "Avante" },
