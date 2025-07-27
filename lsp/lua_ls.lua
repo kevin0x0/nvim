@@ -1,5 +1,3 @@
----@type vim.lsp.Config
-
 ---@diagnostic disable-next-line
 local is_windows = vim.uv.os_uname().sysname == 'Windows_NT'
 
@@ -7,6 +5,7 @@ local function normalize_path(path)
   return is_windows and path:gsub('\\', '/') or path
 end
 
+---@type vim.lsp.Config
 return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
