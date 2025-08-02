@@ -2,11 +2,7 @@
 
 local highlight = vim.cmd.highlight
 
-
--- make EndOfBuffer invisible
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function(_)
+local function general_fix(_)
     local nontext_bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg#", "gui");
     if nontext_bg ~= "" then
       highlight { 'EndOfBuffer', 'guifg=' .. nontext_bg, 'guibg=' .. nontext_bg }
@@ -22,6 +18,13 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- make cursorline visible in linux terminal
     highlight { 'CursorLine',  "ctermbg=146" }
   end
+
+
+
+-- make EndOfBuffer invisible
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = general_fix,
 })
 
 -- fix gruvbox
@@ -37,5 +40,17 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- fix function-like macro
     highlight { 'link', '@lsp.type.macro', 'GruvboxAqua', bang = true }
 
+  end
+})
+
+-- adjust tokyonight-night
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "tokyonight-night",
+  callback = function(args)
+    local guibg='guibg=#1a1b24'
+    highlight { 'Normal', guibg }
+    highlight { 'SignColumn', guibg }
+    highlight { 'FoldColumn', guibg }
+    general_fix(args)
   end
 })

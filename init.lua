@@ -12,7 +12,7 @@ require "common.lsp"
 
 local colorscheme = os.getenv("NVIM_COLORSCHEME")
 if not colorscheme then
-  colorscheme = os.getenv('TERM') ~= 'linux' and 'gruvbox' or 'evening'
+  colorscheme = os.getenv('TERM') ~= 'linux' and 'tokyonight-night' or 'evening'
 end
 
 vim.cmd.colorscheme(colorscheme)
