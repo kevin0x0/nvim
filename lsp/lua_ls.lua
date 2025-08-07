@@ -23,14 +23,15 @@ return {
     Lua = {}
   },
   on_init = function(client)
-    if client.workspace_folders == nil or #client.workspace_folders == 0 then
-      return
-    end
-    local path = normalize_path(client.workspace_folders[1].name)
-    if not os.getenv 'LUA_LS_FOR_NVIM_PLUGIN' and
-      not path:match(normalize_path(vim.fn.stdpath('config')) .. ".*") and
-      not path:match(normalize_path(vim.fn.stdpath('data')) .. ".*") then
-      return
+    if not os.getenv 'LUA_LS_FOR_NVIM_PLUGIN' then
+      if client.workspace_folders == nil or #client.workspace_folders == 0 then
+        return
+      end
+      local path = normalize_path(client.workspace_folders[1].name)
+      if not path:match(normalize_path(vim.fn.stdpath('config')) .. ".*") and
+        not path:match(normalize_path(vim.fn.stdpath('data')) .. ".*") then
+        return
+      end
     end
 
     ---@diagnostic disable-next-line
