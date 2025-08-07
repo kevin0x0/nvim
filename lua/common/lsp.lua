@@ -7,16 +7,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'grr', function() require "telescope.builtin".lsp_references() end, bufopts)
-  vim.keymap.set('n', 'K', function()
-    vim.lsp.buf.hover({
-      close_events = {
-        'CursorMoved',
-        'CursorMovedI',
-        'InsertCharPre',
-        'BufLeave'
-      }
-    })
-  end, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
