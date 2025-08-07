@@ -5,20 +5,36 @@ local function normalize_path(path)
   return is_windows and path:gsub('\\', '/') or path
 end
 
+local root_markers = {
+  '.luarc.json',
+  '.luarc.jsonc',
+  '.luacheckrc',
+  '.stylua.toml',
+  'stylua.toml',
+  'selene.toml',
+  'selene.yml',
+  '.git',
+}
+
 ---@type vim.lsp.Config
 return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
-  root_markers = {
-    '.luarc.json',
-    '.luarc.jsonc',
-    '.luacheckrc',
-    '.stylua.toml',
-    'stylua.toml',
-    'selene.toml',
-    'selene.yml',
-    '.git',
-  },
+  root_dir = function(bufnr, on_dir)
+    local path
+    if vim.bo[bufnr].buftype ~= '' then
+      path = assert(vim.uv.cwd())
+    else
+      path = vim.api.nvim_buf_get_name(bufnr)
+    end
+    local root_dir
+    if path:match(vim.env.VIMRUNTIME .. ".*") then
+      root_dir = vim.env.VIMRUNTIME
+    else
+      root_dir = vim.fs.root(path, root_markers)
+    end
+    on_dir(root_dir)
+  end,
   settings = {
     Lua = {}
   },
@@ -29,6 +45,7 @@ return {
       end
       local path = normalize_path(client.workspace_folders[1].name)
       if not path:match(normalize_path(vim.fn.stdpath('config')) .. ".*") and
+        not path:match(normalize_path(vim.env.VIMRUNTIME) .. ".*") and
         not path:match(normalize_path(vim.fn.stdpath('data')) .. ".*") then
         return
       end
