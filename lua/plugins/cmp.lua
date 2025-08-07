@@ -23,8 +23,8 @@ local config = function(_, _)
       { name = 'treesitter' },
     }),
     mapping = {
-      ['<c-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-      ['<c-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+      ['<c-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i' }),
+      ['<c-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i' }),
       ['<a-q>'] = cmp.mapping(cmp.mapping.close(), { 'i', 'c' }),
       ['<a-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<a-u>'] = cmp.mapping(cmp.mapping.abort(), { 'i', 'c', 'n' }),
