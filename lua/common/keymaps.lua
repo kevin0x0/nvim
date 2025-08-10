@@ -51,8 +51,8 @@ vim.keymap.set('c', '<C-p>', '<Up>', noremap_opt)
 vim.keymap.set('c', '<a-b>', '<s-Left>', noremap_opt)
 vim.keymap.set('c', '<a-f>', '<s-Right>', noremap_opt)
 vim.keymap.set('c', '<C-d>', '<Del>', noremap_opt)
-vim.keymap.set('c', '<a-Backspace>', '<C-w>', noremap_opt)
-vim.keymap.set('c', '<a-d>', '<s-Right><C-w>', noremap_opt)
+-- vim.keymap.set('c', '<a-Backspace>', '<C-w>', noremap_opt)
+-- vim.keymap.set('c', '<a-d>', '<s-Right><C-w>', noremap_opt)
 vim.keymap.set('c', '<C-w>', '<C-d>', noremap_opt)
 
 -- end global key map
