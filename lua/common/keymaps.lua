@@ -41,18 +41,4 @@ vim.keymap.set('i', '<a-L>', '<Right>', opt)
 vim.keymap.set('n', '<a-w>', ':w<CR>', opt)
 vim.keymap.set('n', '<a-q>', ':q<CR>', opt)
 
--- emacs-style cmdline editing
-vim.keymap.set('c', '<C-b>', '<Left>', noremap_opt)
-vim.keymap.set('c', '<C-f>', '<Right>', noremap_opt)
-vim.keymap.set('c', '<C-a>', '<Home>', noremap_opt)
-vim.keymap.set('c', '<C-e>', '<End>', noremap_opt)
-vim.keymap.set('c', '<C-n>', '<Down>', noremap_opt)
-vim.keymap.set('c', '<C-p>', '<Up>', noremap_opt)
-vim.keymap.set('c', '<a-b>', '<s-Left>', noremap_opt)
-vim.keymap.set('c', '<a-f>', '<s-Right>', noremap_opt)
-vim.keymap.set('c', '<C-d>', '<Del>', noremap_opt)
--- vim.keymap.set('c', '<a-Backspace>', '<C-w>', noremap_opt)
--- vim.keymap.set('c', '<a-d>', '<s-Right><C-w>', noremap_opt)
-vim.keymap.set('c', '<C-w>', '<C-d>', noremap_opt)
-
 -- end global key map
