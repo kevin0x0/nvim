@@ -14,7 +14,7 @@ local colorscheme = os.getenv("NVIM_COLORSCHEME")
 if not colorscheme then
   local function has_display()
     local osname = vim.uv.os_uname().sysname;
-    if osname == 'Windows' or osname == 'Darwin' then
+    if osname == 'Windows_NT' or osname == 'Darwin' then
       return true
     end
     if os.getenv("DISPLAY") then
