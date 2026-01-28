@@ -6,6 +6,8 @@ local vimopts = vim.opt
 vimopts.number = true
 vimopts.rnu = true
 
+vimopts.signcolumn = "number"
+
 vimopts.wrap = false
 
 -- show matching parenthesis
