@@ -25,7 +25,7 @@ if not colorscheme then
     end
     return false
   end
-  colorscheme = has_display() and 'tokyonight-night' or 'elflord'
+  colorscheme = has_display() and 'tokyonight' or 'elflord'
 end
 
 vim.cmd.colorscheme(colorscheme)

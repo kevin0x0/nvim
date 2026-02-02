@@ -42,15 +42,3 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
   end
 })
-
--- adjust tokyonight-night
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "tokyonight-night",
-  callback = function(args)
-    local guibg='guibg=#1a1b24'
-    highlight { 'Normal', guibg }
-    highlight { 'SignColumn', guibg }
-    highlight { 'FoldColumn', guibg }
-    general_fix(args)
-  end
-})
