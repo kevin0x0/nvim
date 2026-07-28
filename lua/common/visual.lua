@@ -3,21 +3,21 @@
 local highlight = vim.cmd.highlight
 
 local function general_fix(_)
-    local nontext_bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg#", "gui");
-    if nontext_bg ~= "" then
-      highlight { 'EndOfBuffer', 'guifg=' .. nontext_bg, 'guibg=' .. nontext_bg }
-    end
-    nontext_bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "cterm");
-    if nontext_bg ~= "" then
-      highlight { 'EndOfBuffer', 'ctermfg=' .. nontext_bg, 'ctermbg=' .. nontext_bg }
-    end
-
-    -- fix hover markdown highlight
-    highlight { 'link', 'NormalFloat', 'Pmenu', bang = true }
-
-    -- make cursorline visible in linux terminal
-    highlight { 'CursorLine',  "ctermbg=146" }
+  local nontext_bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg#", "gui");
+  if nontext_bg ~= "" then
+    highlight { 'EndOfBuffer', 'guifg=' .. nontext_bg, 'guibg=' .. nontext_bg }
   end
+  nontext_bg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "cterm");
+  if nontext_bg ~= "" then
+    highlight { 'EndOfBuffer', 'ctermfg=' .. nontext_bg, 'ctermbg=' .. nontext_bg }
+  end
+
+  -- fix hover markdown highlight
+  highlight { 'link', 'NormalFloat', 'Pmenu', bang = true }
+
+  -- make cursorline visible in linux terminal
+  highlight { 'CursorLine',  "ctermbg=146" }
+end
 
 
 
