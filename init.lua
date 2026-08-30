@@ -9,23 +9,3 @@ require "common.lazy"
 
 -- lsp
 require "common.lsp"
-
-local colorscheme = os.getenv("NVIM_COLORSCHEME")
-if not colorscheme then
-  local function has_display()
-    local osname = vim.uv.os_uname().sysname;
-    if osname == 'Windows_NT' or osname == 'Darwin' then
-      return true
-    end
-    if os.getenv("DISPLAY") then
-      return true
-    end
-    if os.getenv("WAYLAND_DISPLAY") then
-      return true
-    end
-    return false
-  end
-  colorscheme = has_display() and 'tokyonight' or 'elflord'
-end
-
-vim.cmd.colorscheme(colorscheme)

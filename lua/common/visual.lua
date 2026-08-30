@@ -42,3 +42,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
   end
 })
+
+-- set colorscheme automatically depending on the termguicolors option on startup
+vim.api.nvim_create_autocmd("OptionSet", {
+  pattern = 'termguicolors',
+  once = true,
+  callback = function()
+    local colorscheme = os.getenv("NVIM_COLORSCHEME")
+    colorscheme = colorscheme or "tokyonight"
+    if vim.o.termguicolors then
+      vim.schedule(function() vim.cmd.colorscheme(colorscheme) end)
+    end
+  end
+})
